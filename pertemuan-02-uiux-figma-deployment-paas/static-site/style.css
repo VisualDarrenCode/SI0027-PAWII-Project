@@ -10,22 +10,76 @@
 /* TODO 1: beri latar belakang gelap & padding pada .header, .logo bold & besar,
    nav rata kanan dengan jarak antar link */
 .header {
+  background-color: #222; /* Latar belakang gelap */
+  padding: 20px 40px;
+  display: flex; /* Flexbox untuk mengatur posisi sejajar */
+  justify-content: space-between; /* Mendorong logo ke kiri dan nav ke kanan */
+  align-items: center; /* Memastikan elemen rata tengah secara vertikal */
+}
+
+/* Menambahkan styling khusus untuk elemen di dalam header */
+.header .logo {
+  color: #fff;
+  font-size: 28px; /* Teks besar */
+  font-weight: bold; /* Teks tebal */
+  text-decoration: none;
+}
+
+.header nav {
+  display: flex;
+  gap: 30px; /* Jarak antar link */
+}
+
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 /* TODO 2: buat .hero rata tengah, judul besar (h1), tombol .cta menonjol dengan
    warna latar mencolok dan padding yang nyaman diklik */
 .hero {
+  text-align: center; /* Membuat semua isi di dalam hero rata tengah */
+  padding: 100px 20px;
+  background-color: #f4f4f4; /* Opsional: pemisah visual dari bagian lain */
+}
+
+.hero h1 {
+  font-size: 48px; /* Judul yang sangat besar */
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .cta {
+  display: inline-block;
+  background-color: #ff5722; /* Warna mencolok (Oranye terang) */
+  color: #fff;
+  padding: 16px 32px; /* Padding yang luas agar nyaman diklik */
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px; /* Membuat sudut tombol sedikit membulat */
+}
+
+.cta:hover {
+  background-color: #e64a19; /* Opsional: efek saat kursor diarahkan ke tombol */
 }
 
 /* TODO 3: buat .features menjadi grid 3 kolom dengan jarak antar kartu,
    .feature-card diberi latar belakang lembut & sudut membulat */
 .features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Membagi menjadi 3 kolom berukuran sama */
+  gap: 30px; /* Jarak antar kartu */
+  padding: 60px 40px;
 }
 
 .feature-card {
+  background-color: #f8f9fa; /* Latar belakang abu-abu sangat lembut */
+  padding: 30px;
+  border-radius: 12px; /* Sudut membulat */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Opsional: bayangan halus agar kartu terlihat timbul */
+  text-align: center;
 }
 
 .footer {
