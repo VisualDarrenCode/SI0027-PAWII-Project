@@ -1,12 +1,11 @@
-// Mini Project - Pertemuan 6-7: Layer Route
-// TODO 3: daftarkan ketiga endpoint berikut, arahkan ke fungsi controller yang sesuai.
+// Solusi Referensi - Pertemuan 6-7: Layer Route
 
 const express = require("express");
 const router = express.Router();
 const mahasiswaController = require("../controllers/mahasiswaController");
 
-// TODO: GET /  -> mahasiswaController.getAll
-// TODO: GET /:id -> mahasiswaController.getById
-// TODO: POST / -> mahasiswaController.create
+router.get("/", mahasiswaController.getAll);
+router.get("/:id", mahasiswaController.getById);
+router.post("/", mahasiswaController.create);
 
 module.exports = router;

@@ -1,0 +1,9 @@
+# Use this workspace to collaborate
+workspace:
+  id: 011fa8b1-d967-4d3d-8777-b3e6537572bc
+
+localResources:
+  collections:
+    - ../pertemuan-08-pengujian-api-postman/PAWII-Mahasiswa-API.postman_collection.json
+  environments:
+    - ../pertemuan-08-pengujian-api-postman/development.postman_environment.json

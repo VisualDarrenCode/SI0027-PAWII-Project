@@ -1,0 +1,14 @@
+{
+  "name": "pertemuan-08-pengujian-api-postman",
+  "version": "1.0.0",
+  "description": "Mini-project pendamping untuk materi slide `Materi-Pertemuan-08-Pengujian-API-Postman-Automation.pptx`.",
+  "main": "index.js",
+  "scripts": {
+  "start": "node index.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
