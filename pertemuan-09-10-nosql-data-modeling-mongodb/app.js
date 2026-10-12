@@ -1,6 +1,4 @@
-// Mini Project - Pertemuan 9-10: Koneksi MongoDB & Routing
-// TODO 4: lengkapi koneksi Mongoose dan pemasangan route di bawah ini.
-// Jalankan dengan: npm install && npm start (setelah menyalin .env.example menjadi .env)
+// Solusi Referensi - Pertemuan 9-10: Koneksi MongoDB Atlas & Routing
 
 require("dotenv").config();
 const express = require("express");
@@ -14,9 +12,18 @@ const prodiRoutes = require("./routes/prodiRoutes");
 
 app.use(express.json());
 
-// TODO: app.use('/mahasiswa', mahasiswaRoutes);
-// TODO: app.use('/prodi', prodiRoutes);
+app.use("/mahasiswa", mahasiswaRoutes);
+app.use("/prodi", prodiRoutes);
 
-// TODO: mongoose.connect(process.env.MONGODB_URI)
-//   .then(() => { console.log('Terhubung ke MongoDB Atlas'); app.listen(PORT, ...); })
-//   .catch((err) => console.error('Gagal terhubung:', err.message));
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("Terhubung ke MongoDB Atlas");
+    app.listen(PORT, () => {
+      console.log(`Server berjalan di http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Gagal terhubung ke MongoDB:", err.message);
+    process.exit(1);
+  });
