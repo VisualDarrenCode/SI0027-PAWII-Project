@@ -1,5 +1,6 @@
-// Mini Project - Pertemuan 9-10: Model Mahasiswa
-// TODO 1: lengkapi Schema di bawah ini.
+// Solusi Referensi - Pertemuan 9-10: Model Mahasiswa
+// alamat -> embedding (subdocument, selalu diakses bersama data mahasiswa)
+// prodiId -> referencing (dipakai berulang oleh banyak mahasiswa lain)
 
 const mongoose = require("mongoose");
 
@@ -12,10 +13,10 @@ const alamatSchema = new mongoose.Schema(
 );
 
 const mahasiswaSchema = new mongoose.Schema({
-  // TODO: tambahkan field nama (String, required)
-  // TODO: tambahkan field nim (String, required, unique)
-  // TODO: tambahkan field alamat bertipe alamatSchema (embedding)
-  // TODO: tambahkan field prodiId yang mereferensi model 'Prodi' (referencing)
+  nama: { type: String, required: true },
+  nim: { type: String, required: true, unique: true },
+  alamat: alamatSchema,
+  prodiId: { type: mongoose.Schema.Types.ObjectId, ref: "Prodi" },
   createdAt: { type: Date, default: Date.now },
 });
 
