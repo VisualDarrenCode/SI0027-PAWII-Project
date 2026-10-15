@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 function PageHeader({ judul }) {
   return (
     <header className="page-header">
-      <h1>{judul}</h1>
+      <div className="brand-wrap">
+        <span className="brand-badge">GT</span>
+        <h1>{judul}</h1>
+      </div>
       <nav>
-        <Link to="/">Daftar Mahasiswa</Link>
+        <Link to="/">Heroes</Link>
         {" | "}
-        <Link to="/tentang">Tentang</Link>
+        <Link to="/tentang">About</Link>
       </nav>
     </header>
   );

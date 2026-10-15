@@ -1,0 +1,162 @@
+{
+  "info": {
+    "name": "GuardianMeta - Karakter API (CRUD Complete)",
+    "description": "Pengujian API CRUD lengkap untuk project GuardianMeta.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET All Karakter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/karakter",
+          "host": ["{{base_url}}"],
+          "path": ["karakter"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code adalah 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response berupa array\", function () {",
+              "    const jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an('array');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST Tambah Karakter",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nama\": \"Future Princess\",\n  \"elemen\": \"Light\",\n  \"role\": \"Tank\",\n  \"senjata\": \"Liberator\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/karakter",
+          "host": ["{{base_url}}"],
+          "path": ["karakter"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code adalah 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.test(\"Simpan id ke environment variable\", function () {",
+              "    const jsonData = pm.response.json();",
+              "    pm.environment.set('karakterId', jsonData.id);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET Satu Karakter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/karakter/{{karakterId}}",
+          "host": ["{{base_url}}"],
+          "path": ["karakter", "{{karakterId}}"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code adalah 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Data memiliki properti nama\", function () {",
+              "    const jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('nama');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "PUT Update Karakter",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nama\": \"Future Princess (Updated)\",\n  \"elemen\": \"Light\",\n  \"role\": \"Tank\",\n  \"senjata\": \"Liberator MK.2\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/karakter/{{karakterId}}",
+          "host": ["{{base_url}}"],
+          "path": ["karakter", "{{karakterId}}"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code adalah 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Nama karakter berhasil di-update\", function () {",
+              "    const jsonData = pm.response.json();",
+              "    pm.expect(jsonData.nama).to.include('Updated');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "DELETE Karakter",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/karakter/{{karakterId}}",
+          "host": ["{{base_url}}"],
+          "path": ["karakter", "{{karakterId}}"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code adalah 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
