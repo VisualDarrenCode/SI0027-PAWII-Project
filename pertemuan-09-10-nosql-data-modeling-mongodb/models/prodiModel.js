@@ -1,4 +1,4 @@
-// Mini Project - Pertemuan 9-10: Model Prodi (sudah lengkap, dipakai untuk latihan referencing)
+
 
 const mongoose = require("mongoose");
 

@@ -1,4 +1,4 @@
-// Mini Project - Pertemuan 9-10: Route Prodi (sudah lengkap)
+
 
 const express = require("express");
 const router = express.Router();

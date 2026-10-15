@@ -1,6 +1,3 @@
-// Solusi Referensi - Pertemuan 9-10: Model Mahasiswa
-// alamat -> embedding (subdocument, selalu diakses bersama data mahasiswa)
-// prodiId -> referencing (dipakai berulang oleh banyak mahasiswa lain)
 
 const mongoose = require("mongoose");
 

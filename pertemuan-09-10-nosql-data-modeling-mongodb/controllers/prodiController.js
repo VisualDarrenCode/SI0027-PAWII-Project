@@ -1,4 +1,4 @@
-// Mini Project - Pertemuan 9-10: Controller Prodi (sudah lengkap)
+// Solusi Referensi - Pertemuan 9-10: Controller Prodi
 
 const Prodi = require("../models/prodiModel");
 

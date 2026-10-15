@@ -1,4 +1,4 @@
-// Solusi Referensi - Pertemuan 9-10: Koneksi MongoDB Atlas & Routing
+
 
 require("dotenv").config();
 const express = require("express");
