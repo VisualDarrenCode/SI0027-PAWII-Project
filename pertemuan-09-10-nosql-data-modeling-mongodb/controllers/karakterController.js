@@ -1,58 +1,56 @@
 // controllers/karakterController.js
-const karakterModel = require("../models/karakterModel");
+const Karakter = require("../models/karakterModel");
 
-exports.getAll = (req, res) => {
+exports.getAll = async (req, res) => {
     try {
-        const data = karakterModel.getAll();
-        res.json(data);
+        const data = await Karakter.find();
+        res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-exports.getById = (req, res) => {
+exports.getById = async (req, res) => {
     try {
-        const id = req.params.id;
-        const data = karakterModel.getById(id);
+        const data = await Karakter.findOne({ id: req.params.id });
         if (!data) {
             return res.status(404).json({ message: "Karakter Guardian Tales tidak ditemukan" });
         }
-        res.json(data);
+        res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     try {
-        const karakterBaru = karakterModel.create(req.body);
-        res.status(201).json(karakterBaru);
+        const karakterBaru = new Karakter(req.body);
+        const saved = await karakterBaru.save();
+        res.status(201).json(saved);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(400).json({ error: error.message });
     }
 };
 
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
     try {
-        const id = req.params.id;
-        const updated = karakterModel.update(id, req.body);
+        const updated = await Karakter.findOneAndUpdate({ id: req.params.id }, req.body, { new: true, runValidators: true });
         if (!updated) {
             return res.status(404).json({ message: "Karakter tidak ditemukan untuk di-update" });
         }
-        res.json(updated);
+        res.status(200).json(updated);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(400).json({ error: error.message });
     }
 };
 
-exports.delete = (req, res) => {
+exports.delete = async (req, res) => {
     try {
-        const id = req.params.id;
-        const deleted = karakterModel.delete(id);
+        const deleted = await Karakter.findOneAndDelete({ id: req.params.id });
         if (!deleted) {
             return res.status(404).json({ message: "Karakter tidak ditemukan untuk dihapus" });
         }
-        res.json({ message: "Karakter berhasil dihapus", data: deleted });
+        res.status(200).json({ message: "Karakter berhasil dihapus", data: deleted });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

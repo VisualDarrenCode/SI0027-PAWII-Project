@@ -13,8 +13,8 @@ const tierListRoutes = require("./routes/tierListRoutes");
 app.use(express.json());
 
 // Daftarkan Endpoint Routes
-app.use("/api/karakter", karakterRoutes);
-app.use("/api/tierlist", tierListRoutes);
+app.use("/karakter", karakterRoutes);
+app.use("/tierlist", tierListRoutes);
 
 // Konfigurasi Koneksi MongoDB & Menjalankan Server
 mongoose
